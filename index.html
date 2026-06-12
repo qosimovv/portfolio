@@ -1082,14 +1082,33 @@
         
         /* ===== THEME TOGGLE & DARK MODE ===== */
         :root[data-theme="dark"] {
-            --bg-color: #0f172a;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --glass-bg: rgba(15, 23, 42, 0.6);
-            --glass-border-top: rgba(255, 255, 255, 0.1);
-            --glass-border-bottom: rgba(255, 255, 255, 0.05);
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            --glass-highlight: rgba(255, 255, 255, 0.05);
+            --bg-color: #000000; /* Pure black for modern premium feel */
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --glass-bg: rgba(15, 15, 20, 0.7); /* Deep dark glass */
+            --glass-border-top: rgba(255, 255, 255, 0.07);
+            --glass-border-bottom: rgba(255, 255, 255, 0.02);
+            --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+            --glass-highlight: rgba(255, 255, 255, 0.02);
+        }
+        
+        /* Dark mode specific orb colors for the neon-on-black look */
+        :root[data-theme="dark"] .orb-1 { background: #1d4ed8; filter: blur(120px); } /* Bright Blue */
+        :root[data-theme="dark"] .orb-2 { background: #7e22ce; filter: blur(120px); } /* Bright Purple */
+        :root[data-theme="dark"] .orb-3 { background: #4338ca; filter: blur(120px); } /* Indigo */
+        :root[data-theme="dark"] .orb-4 { background: #be185d; filter: blur(120px); } /* Deep Pink */
+        
+        /* Fix the gradient text for family name in dark mode */
+        :root[data-theme="dark"] .family-name {
+            background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Fix timeline line color in dark mode */
+        :root[data-theme="dark"] .timeline::after {
+            background: rgba(255, 255, 255, 0.1);
         }
         .theme-toggle {
             background: rgba(255, 255, 255, 0.1);
@@ -1268,7 +1287,7 @@
                 I specialize in <span class="typed-text"></span><span class="cursor">&nbsp;</span>
             </p>
             <div class="hero-actions reveal delay-3" style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
-                <a href="https://drive.google.com/file/d/1UO5uxQmP2qz2CGk-2u9LzAhnsrsMG15n/view?usp=sharing" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 8px; background: #24A1DE; color: white; text-decoration: none; border: none; outline: none; border-radius: var(--radius-xl); padding: 16px 32px; font-weight: 600; transition: var(--transition-smooth);">
+                <a href="https://canva.link/wpmn4m4jotrkqi5" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 8px; background: #24A1DE; color: white; text-decoration: none; border: none; outline: none; border-radius: var(--radius-xl); padding: 16px 32px; font-weight: 600; transition: var(--transition-smooth);">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     Download CV
                 </a>
