@@ -1424,23 +1424,7 @@
         }
 
         /* ===== VISITOR COUNTER ===== */
-        .visitor-counter {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0,0,0,0.04);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-top: 20px;
-            transition: var(--transition-smooth);
-        }
-        .visitor-counter:hover {
-            background: rgba(36, 161, 222, 0.1);
-            color: #24A1DE;
-        }
+        
 
         /* ===== ANIMATED STATISTICS ===== */
         .stats-counter-grid {
@@ -1492,48 +1476,7 @@
             letter-spacing: 1px;
         }
 
-        /* ===== CUSTOM CURSOR ===== */
-        @media (pointer: fine) {
-            body, a, button, .project-card, .cert-card, .nav-link, .timeline-content, .tech-card, .contact-link { cursor: none !important; }
-        }
-        .custom-cursor {
-            position: fixed;
-            top: 0; left: 0;
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border: 2px solid #24A1DE;
-            transition: width 0.3s ease-out, height 0.3s ease-out, background 0.3s ease-out, border-color 0.3s ease-out;
-            will-change: transform;
-        }
-        .custom-cursor.hover {
-            width: 48px; height: 48px;
-            background: rgba(36, 161, 222, 0.4);
-            border-color: #24A1DE;
-        }
-        .custom-cursor-dot {
-            position: fixed;
-            top: 0; left: 0;
-            width: 6px; height: 6px;
-            background: #24A1DE;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s;
-            will-change: transform;
-        }
-        .custom-cursor-dot.hover {
-            opacity: 0;
-        }
-        @media (max-width: 768px) {
-            .custom-cursor, .custom-cursor-dot { display: none !important; }
-        }
+        
 </style>
 </head>
 
@@ -2058,10 +2001,7 @@
     <footer class="footer">
         <div class="container">
             <p>© 2026 Qosimov Sardorbek. Built with <span class="footer-heart">♥</span></p>
-            <div class="visitor-counter" id="visitorCounter">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                Visitors: <span id="visitCount">...</span>
-            </div>
+            
         </div>
     </footer>
 
@@ -2315,46 +2255,9 @@
     </script>
 
     
-    <!-- Custom Cursor DOM -->
-    <div class="custom-cursor" id="customCursor"></div>
-    <div class="custom-cursor-dot" id="customCursorDot"></div>
+    
 
     <script>
-        /* ===== CUSTOM CURSOR LOGIC ===== */
-        const cursor = document.getElementById('customCursor');
-        const cursorDot = document.getElementById('customCursorDot');
-        
-        if (window.matchMedia("(pointer: fine)").matches) {
-            let mouseX = 0, mouseY = 0;
-            let cursorX = 0, cursorY = 0;
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-            });
-
-            const animateCursor = () => {
-                cursorX += (mouseX - cursorX) * 0.2;
-                cursorY += (mouseY - cursorY) * 0.2;
-                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-                requestAnimationFrame(animateCursor);
-            };
-            animateCursor();
-
-            const interactables = document.querySelectorAll('a, button, .glass-card, .nav-link, .contact-link');
-            interactables.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.classList.add('hover');
-                    cursorDot.classList.add('hover');
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('hover');
-                    cursorDot.classList.remove('hover');
-                });
-            });
-        }
-
         /* ===== ANIMATED NUMBERS COUNTER LOGIC ===== */
         const statNumbers = document.querySelectorAll('.stat-counter-number');
         let statsAnimated = false;
