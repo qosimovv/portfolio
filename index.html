@@ -1441,6 +1441,99 @@
             background: rgba(36, 161, 222, 0.1);
             color: #24A1DE;
         }
+
+        /* ===== ANIMATED STATISTICS ===== */
+        .stats-counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .stat-counter-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+        .stat-counter-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(36, 161, 222, 0.4);
+            box-shadow: 0 15px 35px rgba(36, 161, 222, 0.1);
+        }
+        .stat-counter-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .stat-counter-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #24A1DE;
+            line-height: 1;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .stat-counter-number::after {
+            content: '+';
+            font-size: 2rem;
+            color: var(--text-tertiary);
+            margin-left: 4px;
+        }
+        .stat-counter-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CUSTOM CURSOR ===== */
+        @media (pointer: fine) {
+            body, a, button, .project-card, .cert-card, .nav-link, .timeline-content, .tech-card, .contact-link { cursor: none !important; }
+        }
+        .custom-cursor {
+            position: fixed;
+            top: 0; left: 0;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border: 2px solid #24A1DE;
+            transition: width 0.3s ease-out, height 0.3s ease-out, background 0.3s ease-out, border-color 0.3s ease-out;
+            will-change: transform;
+        }
+        .custom-cursor.hover {
+            width: 48px; height: 48px;
+            background: rgba(36, 161, 222, 0.4);
+            border-color: #24A1DE;
+        }
+        .custom-cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 6px; height: 6px;
+            background: #24A1DE;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+            will-change: transform;
+        }
+        .custom-cursor-dot.hover {
+            opacity: 0;
+        }
+        @media (max-width: 768px) {
+            .custom-cursor, .custom-cursor-dot { display: none !important; }
+        }
 </style>
 </head>
 
@@ -1527,7 +1620,7 @@
                     <h3 class="about-name">Qosimov Sardorbek</h3>
                     <p class="about-role">Statistics Student at <a href="https://www.google.com/maps/search/Toshkent+davlat+iqtisodiyot+universiteti/" target="_blank" title="Toshkent davlat iqtisodiyot universiteti lakatsiyasi" style="color: inherit; text-decoration: underline; text-decoration-style: dotted;">TSUE</a></p>
                     <p class="about-location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#24A1DE"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
@@ -1751,7 +1844,7 @@
                         English language proficiency.</p>
                     <div class="cert-footer">
                         <span class="cert-coming-soon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#24A1DE"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
@@ -1855,6 +1948,40 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    
+    <!-- ANIMATED STATISTICS -->
+    <section class="section" id="statistics" style="padding-top: 20px;">
+        <div class="container">
+            <div class="stats-counter-grid">
+                
+                <div class="stat-counter-card glass-card liquid-glass reveal delay-1">
+                    <div class="stat-counter-icon">🏆</div>
+                    <div class="stat-counter-number" data-target="5">0</div>
+                    <div class="stat-counter-label">Certificates Earned</div>
+                </div>
+                
+                <div class="stat-counter-card glass-card liquid-glass reveal delay-2">
+                    <div class="stat-counter-icon">🚀</div>
+                    <div class="stat-counter-number" data-target="4">0</div>
+                    <div class="stat-counter-label">Projects Completed</div>
+                </div>
+                
+                <div class="stat-counter-card glass-card liquid-glass reveal delay-3">
+                    <div class="stat-counter-icon">⏱️</div>
+                    <div class="stat-counter-number" data-target="2">0</div>
+                    <div class="stat-counter-label">Years Learning</div>
+                </div>
+                
+                <div class="stat-counter-card glass-card liquid-glass reveal delay-4">
+                    <div class="stat-counter-icon">💻</div>
+                    <div class="stat-counter-number" data-target="1000">0</div>
+                    <div class="stat-counter-label">Hours of Study</div>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -2187,6 +2314,79 @@
     </script>
     </script>
 
-    </body>
+    
+    <!-- Custom Cursor DOM -->
+    <div class="custom-cursor" id="customCursor"></div>
+    <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+    <script>
+        /* ===== CUSTOM CURSOR LOGIC ===== */
+        const cursor = document.getElementById('customCursor');
+        const cursorDot = document.getElementById('customCursorDot');
+        
+        if (window.matchMedia("(pointer: fine)").matches) {
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            });
+
+            const animateCursor = () => {
+                cursorX += (mouseX - cursorX) * 0.2;
+                cursorY += (mouseY - cursorY) * 0.2;
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+                requestAnimationFrame(animateCursor);
+            };
+            animateCursor();
+
+            const interactables = document.querySelectorAll('a, button, .glass-card, .nav-link, .contact-link');
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                    cursorDot.classList.add('hover');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                    cursorDot.classList.remove('hover');
+                });
+            });
+        }
+
+        /* ===== ANIMATED NUMBERS COUNTER LOGIC ===== */
+        const statNumbers = document.querySelectorAll('.stat-counter-number');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    statNumbers.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2500;
+                        const increment = target / (duration / 16);
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCounter();
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.getElementById('statistics');
+        if(statsSection) statsObserver.observe(statsSection);
+    </script>
+</body>
 
 </html>
