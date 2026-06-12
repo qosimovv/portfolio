@@ -2175,14 +2175,15 @@
         }, { passive: true });
         
             /* ===== VISITOR COUNTER ===== */
-        let visits = localStorage.getItem('page_visits');
-        if(!visits) {
-            visits = Math.floor(Math.random() * (1250 - 1100 + 1)) + 1100; // start random
-        } else {
-            visits = parseInt(visits) + 1;
-        }
-        localStorage.setItem('page_visits', visits);
-        document.getElementById('visitCount').innerText = visits;
+        fetch('https://api.counterapi.dev/v1/s1qosimovv/portfolio/up')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitCount').innerText = data.count;
+            })
+            .catch(error => {
+                console.error('Counter API Error:', error);
+                document.getElementById('visitCount').innerText = '1';
+            });
     </script>
     </script>
 
